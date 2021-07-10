@@ -80,7 +80,7 @@ var clientsArray = {},
         disableWelcome: true,
         disableLogs: true
     },
-    activelog = false;
+    activelog = true;
 
 const app = express();
 const router = express.Router();
