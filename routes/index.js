@@ -22,7 +22,7 @@ var clientsArray = {},
     reloads = {},
     sessionLoop = {},
     options = {
-        browserWS: `ws://0.0.0.0:3050?token=${token}`,
+        // browserWS: `ws://0.0.0.0:3050?token=${token}`,
         logQR: false,
         browserArgs: [
             '--no-sandbox',
@@ -999,19 +999,9 @@ router.get(`/:session/foto`, async (req, res) => {
             sufixo = '@g.us';
         }
         if (chatId && type && sufixo) {
-            // delay
-            await sleep(1000);
-            try {
-                let url = await clientsArray[session].getProfilePicFromServer(chatId + sufixo);
-                res.status(200).json(url);
-            } catch (e) {
-                if (activelog) {
-                    console.log(e);
-                }
-                res.status(500).json({
-                    message: 'Algo deu errado!'
-                });
-            }
+            res.status(200).json({
+                message: 'desabilitando essa funcao'
+            });
         } else {
             res.status(400).json({
                 success: false,
