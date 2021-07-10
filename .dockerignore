@@ -1,0 +1,5 @@
+node_modules/
+tokens/
+upload/
+debug.log
+package-lock.json

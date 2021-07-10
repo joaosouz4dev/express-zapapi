@@ -1,0 +1,6 @@
+<h3>Todas as Rotas:</h3>
+<ul>
+  	{{#names}}
+  		<li><a href=".{{name}}">{{name}}</a></li>
+    {{/names}}
+</ul>
