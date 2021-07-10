@@ -999,9 +999,19 @@ router.get(`/:session/foto`, async (req, res) => {
             sufixo = '@g.us';
         }
         if (chatId && type && sufixo) {
-            res.status(200).json({
-                message: 'desabilitando essa funcao'
-            });
+            // delay
+            await sleep(10000);
+            try {
+                let url = await clientsArray[session].getProfilePicFromServer(chatId + sufixo);
+                res.status(200).json(url);
+            } catch (e) {
+                if (activelog) {
+                    console.log(e);
+                }
+                res.status(500).json({
+                    message: 'Algo deu errado!'
+                });
+            }
         } else {
             res.status(400).json({
                 success: false,
