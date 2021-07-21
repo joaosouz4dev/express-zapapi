@@ -1350,7 +1350,7 @@ router.post(`/:session/enviarimagem`, async (req, res) => {
                     message: e
                 });
             } else {
-                if (req.body.numero && req.files[0].filename) {
+                if (req.body.numero && req.files[0] && req.files[0].filename) {
                     try {
                         let respo = await clientsArray[session]
                             .sendImage(
@@ -1567,7 +1567,7 @@ async function start(session) {
                 funcoesSocket.message(message, session);
 
                 // retornando algo quando recebe "!oi"
-                let msg = message.body.toLowerCase();
+                let msg = message.body?.toLowerCase();
                 if (msg == '!oi') {
                     let message2 = 'Olá 👋, em que posso te ajudar?';
                     let resp = await clientsArray[session].sendText(message.from, message2);
