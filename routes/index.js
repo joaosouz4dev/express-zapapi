@@ -1611,7 +1611,9 @@ async function start(session) {
     // Monitora as atualizações das mensagens
     clientsArray[session].onAck(async (ack) => {
         let getMessage = await clientsArray[session].getMessageById(ack.id._serialized.toString());
-        funcoesSocket.ack(getMessage, session);
+        if(getMessage){
+            funcoesSocket.ack(ack, session);
+        }
         if (activelog) {
             console.log(
                 'Atualizando mensagem: ' + chalk.green(session));
