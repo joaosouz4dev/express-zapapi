@@ -6,7 +6,7 @@
 
 #### token = "4D83A1B9A15FE8C3498F998E954DB"
 
-#### SITEPOST = "https://whatsmapp.mappsistemas.com/"
+#### SITEPOST = "http://localhost:3000/"
 
 ## Rotas
 
