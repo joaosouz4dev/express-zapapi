@@ -21,7 +21,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start index.js --name 'whatsmapp-vm'",
+    "start": "pm2 start index.js --name 'whatsmapp-vm' --cron-restart='0 3 * * *'",
     "dev": "set PORT=3500&& set NODE_ENV=development&& nodemon index.js"
   },
   "nodemonConfig": {
@@ -33,7 +33,7 @@
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "@wppconnect-team/wppconnect": "^1.8.12",
+    "@wppconnect-team/wppconnect": "^1.8.13",
     "axios": "^0.19.2",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
