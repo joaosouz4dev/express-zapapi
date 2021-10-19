@@ -1219,8 +1219,10 @@ router.get(`/:session/enviarmsg`, async (req, res) => {
         let numero = chatId + "@c.us";
         numero = await clientsArray[session].checkNumberStatus(numero);
         if (numero) {
+          console.log(numero);
           numero = numero._serialized;
           let element = await clientsArray[session].sendText(numero, "" + msg);
+
           res.status(200).json(element);
           if (activelog) {
             console.log("Inserindo mensagem: " + chalk.green(session));
