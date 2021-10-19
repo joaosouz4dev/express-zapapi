@@ -7,10 +7,6 @@
     "email": "web@joaovictorsouza.dev",
     "url": "https://joaovictorsouza.dev"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/joaosouz4/newapivenom.git"
-  },
   "keywords": [
     "whatsapp",
     "machine learning",
@@ -33,7 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "@wppconnect-team/wppconnect": "^1.8.13",
+    "@wppconnect-team/wppconnect": "^1.9.2",
     "axios": "^0.19.2",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",

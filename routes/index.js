@@ -1216,8 +1216,10 @@ router.get(`/:session/enviarmsg`, async (req, res) => {
     if (chatId && msg) {
       msg = msg.replace(/<br>/gi, "\n");
       try {
+        let numero = chatId + "@c.us";
+        numero = await clientsArray[sessaoname].checkNumberStatus(numero)?._serialized;
         let element = await clientsArray[session].sendText(
-          chatId + "@c.us",
+          numero,
           "" + msg
         );
         res.status(200).json(element);
@@ -1408,11 +1410,13 @@ router.post(`/:session/enviarimagem`, async (req, res) => {
       } else {
         if (req.body.numero && req.files[0] && req.files[0].filename) {
           try {
+            let caption = req.body.caption ? req.body.caption : "";
             let respo = await clientsArray[session]
               .sendImage(
                 req.body.numero + "@c.us",
                 req.files[0].path,
-                req.files[0].originalname.split(".").slice(0, -1).join(".") + ""
+                req.files[0].originalname.split(".").slice(0, -1).join(".") + "",
+                caption
               )
               .then(() => {
                 fs.unlinkSync(req.files[0].path);
