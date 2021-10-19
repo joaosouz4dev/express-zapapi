@@ -1217,14 +1217,18 @@ router.get(`/:session/enviarmsg`, async (req, res) => {
       msg = msg.replace(/<br>/gi, "\n");
       try {
         let numero = chatId + "@c.us";
-        numero = await clientsArray[sessaoname].checkNumberStatus(numero)?._serialized;
-        let element = await clientsArray[session].sendText(
-          numero,
-          "" + msg
-        );
-        res.status(200).json(element);
-        if (activelog) {
-          console.log("Inserindo mensagem: " + chalk.green(session));
+        numero = await clientsArray[sessaoname].checkNumberStatus(numero);
+        if (numero) {
+          numero = numero._serialized;
+          let element = await clientsArray[session].sendText(numero, "" + msg);
+          res.status(200).json(element);
+          if (activelog) {
+            console.log("Inserindo mensagem: " + chalk.green(session));
+          }
+        } else {
+          res.status(404).json({
+            message: "Número não encontrado!",
+          });
         }
       } catch (e) {
         if (activelog) {
@@ -1415,7 +1419,8 @@ router.post(`/:session/enviarimagem`, async (req, res) => {
               .sendImage(
                 req.body.numero + "@c.us",
                 req.files[0].path,
-                req.files[0].originalname.split(".").slice(0, -1).join(".") + "",
+                req.files[0].originalname.split(".").slice(0, -1).join(".") +
+                  "",
                 caption
               )
               .then(() => {
