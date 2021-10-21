@@ -16,6 +16,7 @@ import chalk from "chalk";
 import fnSocket from "../controllers/fnsocket.js";
 
 const token = "4D83A1B9A15FE8C3498F998E954DB";
+const SITEPOST = 'https://whatsmapp.com.br/';
 var clientsArray = {},
   SessionValidator = {},
   users = {},
@@ -1221,9 +1222,9 @@ router.get(`/:session/enviarmsg`, async (req, res) => {
         if (numero) {
           numero = numero.id._serialized;
           let element = await clientsArray[session].sendText(numero, "" + msg);
-          if(element){
+          if (element) {
             res.status(200).json(element);
-          }else{
+          } else {
             res.status(500).json({
               message: "Algo deu errado!",
             });
@@ -1658,6 +1659,11 @@ async function start(session) {
       if (activelog) {
         console.log("Inserindo mensagem: " + chalk.green(session));
       }
+
+      await axiosPost("api/recebeMensagemZap", {
+        json: message,
+        slug: session,
+      });
     }
   });
 
@@ -1772,8 +1778,36 @@ async function start_session(session) {
             try {
               let me = await clientsArray[session].getHostDevice();
               if (me && me.wid && me.wid.user) {
-                start(session);
-                resolve(true);
+                let resp = await axiosPost("api/ativarSincronizacaoNumero", {
+                  numero: me.wid.user,
+                  status: true,
+                  slug: session,
+                  idEmpresa: idEmpresa,
+                });
+                //console.log("- Conferindo sincronização para: " + chalk.green(session) + " ID: " + chalk.green(idEmpresa));
+                //console.log(resp);
+                if (resp.status) {
+                  await start(session, idEmpresa);
+                  funcoesSocket.alert(
+                    {
+                      titulo: "Alerta",
+                      message: resp.msg,
+                      tipo: "success",
+                    },
+                    session
+                  );
+                  resolve(true);
+                } else {
+                  funcoesSocket.alert(
+                    {
+                      titulo: "Alerta",
+                      message: resp.msg,
+                      tipo: "danger",
+                    },
+                    session
+                  );
+                  reject(false);
+                }
               } else {
                 reject(false);
               }
@@ -1800,6 +1834,22 @@ async function start_session(session) {
       reject(false);
     }
   });
+}
+
+/**
+ * Função para fazer um post por axios
+ * @param {string} path string caminho para o post
+ * @param {object} dados objeto com os dados a enviar
+ */
+async function axiosPost(path, dados) {
+  return await axios
+    .post(SITEPOST + path, qs.stringify(dados))
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      // console.error('Error no ajax post:', error);
+    });
 }
 
 /**
@@ -1835,6 +1885,11 @@ async function delete_session(session) {
   if (await verify_session(session, true)) {
     funcoesSocket.qrCodeDelete(session);
     if (session && clientsArray[session]) {
+      await axiosPost("api/ativarSincronizacaoAlterarStatusNumero", {
+        slug: session,
+        idEmpresa: clientsArray[session].idEmpresa,
+        status: "N",
+      });
       funcoesSocket.alert(
         {
           titulo: "Alerta",
@@ -1877,26 +1932,6 @@ async function restart_session(session) {
     return true;
   } else {
     return false;
-  }
-}
-
-/**
- * Função para fazer um post por axios
- * @param {string} url string url para o post
- * @param {object} dados objeto com os dados a enviar
- */
-async function axiosPost(url, dados) {
-  try {
-    return await axios
-      .post(url.toString(), qs.stringify(dados))
-      .then((r) => {
-        return r.data;
-      })
-      .catch((e) => {
-        return e;
-      });
-  } catch (e) {
-    return e;
   }
 }
 
