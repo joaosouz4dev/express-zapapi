@@ -1765,7 +1765,7 @@ async function start_session(session, idEmpresa) {
         if (conflits.includes(statusSession)) {
           await axiosPost("api/ativarSincronizacaoAlterarStatusNumero", {
             slug: session,
-            idEmpresa: clientsArray[session].idEmpresa,
+            idEmpresa: idEmpresa,
             status: "N",
           });
           delete clientsArray[session];
