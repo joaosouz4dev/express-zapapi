@@ -490,8 +490,9 @@ router.get(`/sessions`, (req, res) => {
 // Autenticação para criar o wppconnect
 router.get(`/:session/autenticacao`, async (req, res) => {
   const session = req.params.session;
-  if (session) {
-    if (session && typeof SessionValidator[session] == "undefined") {
+  const idEmpresa = req.query.idEmpresa;
+  if (session && idEmpresa) {
+    if (session && idEmpresa && typeof SessionValidator[session] == "undefined") {
       if (activelog) {
         console.log("Iniciando sessão: " + chalk.green(session));
       }
@@ -505,7 +506,7 @@ router.get(`/:session/autenticacao`, async (req, res) => {
         });
       }
 
-      await start_session(session)
+      await start_session(session, idEmpresa)
         .then(() => {
           res.status(200).json({
             message: "Autenticado",
@@ -1739,8 +1740,9 @@ async function downloadFile(path, message, session) {
 /**
  * Função para iniciar a sessão
  * @param {string} session string identificadora
+ * @param {string} idEmpresa string que passa o id da empresa
  */
-async function start_session(session) {
+async function start_session(session, idEmpresa) {
   return new Promise(async (resolve, reject) => {
     await sleep(500);
 
@@ -1773,6 +1775,7 @@ async function start_session(session) {
         .then(async (client) => {
           delete clientsArray[session];
           clientsArray[session] = client;
+          clientsArray[session].idEmpresa = idEmpresa;
           // post para o banco de dados
           if (clientsArray[session]) {
             try {
@@ -1787,7 +1790,7 @@ async function start_session(session) {
                 //console.log("- Conferindo sincronização para: " + chalk.green(session) + " ID: " + chalk.green(idEmpresa));
                 //console.log(resp);
                 if (resp.status) {
-                  await start(session, idEmpresa);
+                  await start(session);
                   funcoesSocket.alert(
                     {
                       titulo: "Alerta",
