@@ -1763,6 +1763,11 @@ async function start_session(session, idEmpresa) {
           "deleteToken",
         ];
         if (conflits.includes(statusSession)) {
+          await axiosPost("api/ativarSincronizacaoAlterarStatusNumero", {
+            slug: session,
+            idEmpresa: clientsArray[session].idEmpresa,
+            status: "N",
+          });
           delete clientsArray[session];
         }
         funcoesSocket.statusFind({ message: statusSession }, session);
