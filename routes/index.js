@@ -1892,7 +1892,7 @@ async function verify_session(session, option = false) {
 async function delete_session(session) {
   if (await verify_session(session, true)) {
     funcoesSocket.qrCodeDelete(session);
-    if (session && clientsArray[session]) {
+    if (session && typeof clientsArray[session] !== "undefined") {
       await axiosPost("api/ativarSincronizacaoAlterarStatusNumero", {
         slug: session,
         idEmpresa: clientsArray[session].idEmpresa,
