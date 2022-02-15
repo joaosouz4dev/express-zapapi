@@ -29,7 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "@wppconnect-team/wppconnect": "^1.9.2",
+    "@wppconnect-team/wppconnect": "^1.12.5",
     "axios": "^0.26.0",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
