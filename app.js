@@ -4,11 +4,19 @@ import { app, router, server } from "./routes/index.js";
 import cors from "cors";
 import path from "path";
 import compression from "compression";
+import RateLimit from "express-rate-limit";
+
+// set up rate limiter: maximum of five requests per minute
+const limiter = new RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 60
+});
 
 // Constante
 const dirname = path.resolve();
 
 // Config
+app.use(limiter); // apply rate limiter to all requests
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
