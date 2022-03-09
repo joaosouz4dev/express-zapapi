@@ -144,15 +144,15 @@
   dependencies:
     "@types/node" "*"
 
-"@wppconnect-team/wppconnect@^1.12.5":
-  version "1.12.5"
-  resolved "https://registry.yarnpkg.com/@wppconnect-team/wppconnect/-/wppconnect-1.12.5.tgz#b7c6469544607a3b51f8d719caea7b3dce16dffe"
-  integrity sha512-ztnuyNwAXKmJNHJalv20hPR8eRrGJdl7+aT1qFQfpiNhvzB2oPBeMuByfJBrfGyks9nmLUJIPUHqnp0HglArnA==
+"@wppconnect-team/wppconnect@^1.12.7":
+  version "1.12.7"
+  resolved "https://registry.yarnpkg.com/@wppconnect-team/wppconnect/-/wppconnect-1.12.7.tgz#33546ed778589ea528fdc7c22847774aa1bc31ab"
+  integrity sha512-3j7A99d8O2ErgiS0d94JGiSnZSc6KoOd0gYtb5BI+1TdhcwFN8YlAzcu/TAVu3szdGcPJD++Py4fXIFYmWO1aA==
   dependencies:
-    "@wppconnect/wa-js" "^1.1.16"
-    "@wppconnect/wa-version" "^1.1.30"
+    "@wppconnect/wa-js" "^1.2.0"
+    "@wppconnect/wa-version" "^1.1.39"
     atob "^2.1.2"
-    axios "^0.25.0"
+    axios "^0.26.0"
     boxen "^5.1.2"
     catch-exit "^1.1.0"
     chalk "~4.1.2"
@@ -161,7 +161,7 @@
     file-type "~16.5.3"
     futoin-hkdf "^1.5.0"
     latest-version "^5.1.0"
-    logform "^2.3.2"
+    logform "^2.4.0"
     lookpath "^1.2.0"
     mime-types "^2.1.34"
     puppeteer "*"
@@ -173,23 +173,23 @@
     reflect-metadata "^0.1.13"
     rimraf "^3.0.2"
     sanitize-filename "^1.6.3"
-    sharp "^0.30.0"
+    sharp "^0.30.2"
     tmp "^0.2.1"
     tree-kill "^1.2.2"
-    winston "^3.5.1"
-    ws "^8.4.2"
+    winston "^3.6.0"
+    ws "^8.5.0"
   optionalDependencies:
     fsevents "^2.3.1"
 
-"@wppconnect/wa-js@^1.1.16":
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/@wppconnect/wa-js/-/wa-js-1.1.17.tgz#6f2a5d695cc11aaec103fe1f19668080835fa1d3"
-  integrity sha512-aHz67HEOL7t0hGEoG7cVJ6S3rMo5RKTxHDDl/AkS7dcOnpICOFd4XH7qJpMI24rgv54C2CojmsbJ+JUXSEgOeQ==
+"@wppconnect/wa-js@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@wppconnect/wa-js/-/wa-js-1.2.1.tgz#1ecb29d6bf0649124345b693e2848cb5460bf8fd"
+  integrity sha512-Kf5PylLwZVp5AnyXstcVApUsoLtNkkQcmId9yT5XeBCLILixONU4A7oMlkXO1WR1Vn7Cybo7ZYP0XoIynPXZ+g==
 
-"@wppconnect/wa-version@^1.1.30":
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/@wppconnect/wa-version/-/wa-version-1.1.30.tgz#016a6a85022dbd988dba2645927cecb8d98f2767"
-  integrity sha512-/OyJe9Somxi7cyk8MjsTBmgdaVYn/TbC2UWnaXB9nJL7cGBWGPpWHqOqyuizTBGEZFcnRPKUt4z2Nwm9iRCigA==
+"@wppconnect/wa-version@^1.1.39":
+  version "1.1.40"
+  resolved "https://registry.yarnpkg.com/@wppconnect/wa-version/-/wa-version-1.1.40.tgz#4e062d2271d19177f02da34d6f95f2fc5153842b"
+  integrity sha512-tPzX2IbfSzfpi3wtmtC5Xaf0XoIshcIExqYDwyq36vRnUVJiiIrI5n541PoBUuTnntQBhpxKe5GQOyzUaRbqaQ==
   dependencies:
     node-fetch "^2.6.7"
     semver "^7.3.5"
@@ -315,13 +315,6 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-
-axios@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.25.0.tgz#349cfbb31331a9b4453190791760a8d35b093e0a"
-  integrity sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==
-  dependencies:
-    follow-redirects "^1.14.7"
 
 axios@^0.26.0:
   version "0.26.0"
@@ -710,7 +703,7 @@ color@^3.1.3:
     color-convert "^1.9.3"
     color-string "^1.6.0"
 
-color@^4.2.0:
+color@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/color/-/color-4.2.1.tgz#498aee5fce7fc982606c8875cab080ac0547c884"
   integrity sha512-MFJr0uY4RvTQUKvPq7dh9grVOTYSFeXja2mBXioCGjnjJoXrAp9jJ1NQTDR73c9nwBSAQiNKloKl5zq9WB9UPw==
@@ -1041,7 +1034,7 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
-detect-libc@^2.0.0:
+detect-libc@^2.0.0, detect-libc@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.1.tgz#e1897aa88fa6ad197862937fbc0441ef352ee0cd"
   integrity sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==
@@ -1457,7 +1450,7 @@ fn.name@1.x.x:
   resolved "https://registry.yarnpkg.com/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.14.7, follow-redirects@^1.14.8:
+follow-redirects@^1.14.8:
   version "1.14.8"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.8.tgz#016996fb9a11a100566398b1c6839337d7bfa8fc"
   integrity sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==
@@ -3161,13 +3154,13 @@ shallow-clone@^0.1.2:
     lazy-cache "^0.2.3"
     mixin-object "^2.0.1"
 
-sharp@^0.30.0:
-  version "0.30.1"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.30.1.tgz#203efaf9acfc5c15c8a343800254621e56011c12"
-  integrity sha512-ycpz81q8AeVjz1pGvvirQBeJcYE2sXAjcLXR/69LWOe/oxavBLOrenZcTzvTXn83jqAGqY+OuwF+2kFXzbKtDA==
+sharp@^0.30.2:
+  version "0.30.2"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.30.2.tgz#95b309b2740424702dc19b62a62595dd34a458b1"
+  integrity sha512-mrMeKI5ECTdYhslPlA2TbBtU3nZXMEBcQwI6qYXjPlu1LpW4HBZLFm6xshMI1HpIdEEJ3UcYp5AKifLT/fEHZQ==
   dependencies:
-    color "^4.2.0"
-    detect-libc "^2.0.0"
+    color "^4.2.1"
+    detect-libc "^2.0.1"
     node-addon-api "^4.3.0"
     prebuild-install "^7.0.1"
     semver "^7.3.5"
@@ -3749,7 +3742,7 @@ winston-transport@^4.5.0:
     readable-stream "^3.6.0"
     triple-beam "^1.3.0"
 
-winston@^3.5.1:
+winston@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/winston/-/winston-3.6.0.tgz#be32587a099a292b88c49fac6fa529d478d93fb6"
   integrity sha512-9j8T75p+bcN6D00sF/zjFVmPp+t8KMPB1MzbbzYjeN9VWxdsYnTB40TkbNUEXAmILEfChMvAMgidlX64OG3p6w==
@@ -3789,7 +3782,7 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@8.5.0, ws@^8.4.2:
+ws@8.5.0, ws@^8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
   integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
